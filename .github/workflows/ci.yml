@@ -21,6 +21,8 @@ jobs:
         with:
           branches: |
             [ 'main' ]
+          plugins: |
+            ['@semantic-release/commit-analyzer', '@semantic-release/github']
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish role
