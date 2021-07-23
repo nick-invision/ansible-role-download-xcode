@@ -1,12 +1,16 @@
 ---
-- name: Validate required values
-  include_role:
-    name: nick_invision.required
-  vars:
-    required_vars:
-      - xcode_install_user
-      - xcode_install_pass
-      - xcode_versions
+- name: Validate required variables are set
+  run_once: true
+  assert:
+    that:
+      - "{{ item }} is defined"
+      - "{{ item }} | length > 0"
+    quiet: true
+    fail_msg: "Required variable {{ item }} undefined or zero length"
+  loop:
+    - xcode_install_user
+    - xcode_install_pass
+    - xcode_versions
 
 - name: Check for xcversion
   command: xcversion --version

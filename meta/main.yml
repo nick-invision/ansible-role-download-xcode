@@ -28,5 +28,4 @@ galaxy_info:
     - macos
     - xcode
 
-dependencies:
-  - nick_invision.required
+dependencies: []
