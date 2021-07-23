@@ -8,7 +8,7 @@
 
 - name: Set Fastlane Cookie
   include_tasks: set-cookie.yml
-  when: should_copy_local_cookie
+  when: use_local_cookie
 
 - name: Download Xcode Xip(s)
   include_tasks: download-xc-xips.yml
