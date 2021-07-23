@@ -18,21 +18,21 @@ jobs:
         run: ansible-playbook tests/test.yml -i tests/inventory --syntax-check
       - name: Bump release version/tag
         uses: docker://ghcr.io/codfish/semantic-release-action:v1
-        # with:
-        #   branches: |
-        #     [ 'main' ]
-        #   plugins: |
-        #     [
-        #       ["@semantic-release/commit-analyzer", {
-        #         "preset": "angular",
-        #         "releaseRules": [
-        #           {"type": "major", "release": "major"},
-        #           {"type": "minor", "release": "minor"},
-        #           {"type": "patch", "release": "patch"}
-        #         ],
-        #       }],
-        #       "@semantic-release/commit-analyzer"
-        #     ]
+        with:
+          branches: |
+            [ 'main' ]
+          plugins: |
+            [
+              ["@semantic-release/commit-analyzer", {
+                "preset": "angular",
+                "releaseRules": [
+                  {"type": "major", "release": "major"},
+                  {"type": "minor", "release": "minor"},
+                  {"type": "patch", "release": "patch"}
+                ],
+              }],
+              "@semantic-release/github"
+            ]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish role
