@@ -3,11 +3,6 @@ galaxy_info:
   author: Nick Fields
   description: >-
     Downloads specific version(s) of Xcode xips using the xcode-install gem.
-    Requires valid Apple developer credentials.
-    If 2FA configured, also requires a fastlane/spaceship cookie file.
-    See README.md for details on generate cookie.
-
-    This pairs well with macstadium.xcode to then handle the install
   license: license (MIT)
   min_ansible_version: 2.9
 
