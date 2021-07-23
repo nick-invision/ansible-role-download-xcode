@@ -17,7 +17,7 @@ jobs:
       - name: Run test
         run: ansible-playbook tests/test.yml -i tests/inventory --syntax-check
       - name: Bump release version/tag
-        uses: codfish/semantic-release-action@v1
+        uses: docker://ghcr.io/codfish/semantic-release-action:v1
         # with:
         #   branches: |
         #     [ 'main' ]
