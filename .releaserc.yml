@@ -12,5 +12,4 @@ release:
           release: minor
         - type: patch
           release: patch
-    "@semantic-release/commit-analyzer":
-      
+    "@semantic-release/github":
