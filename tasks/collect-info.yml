@@ -14,5 +14,5 @@
   register: xcversion_exists
 
 - name: Set facts
-  set_facts:
+  set_fact:
     should_install_xcversion: "{{ xcversion_exists.rc > 0 }}"
