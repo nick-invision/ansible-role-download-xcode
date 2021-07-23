@@ -1,0 +1,16 @@
+---
+release:
+  branches:
+    - main
+  plugins:
+    "@semantic-release/commit-analyzer":
+      preset: angular
+      releaseRules:
+        - type: major
+          release: major
+        - type: minor
+          release: minor
+        - type: patch
+          release: patch
+    "@semantic-release/commit-analyzer":
+      
