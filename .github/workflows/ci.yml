@@ -19,7 +19,8 @@ jobs:
       - name: Bump release version/tag
         uses: codfish/semantic-release-action@v1
         with:
-          branches: ["main"]
+          branches: |
+            [ 'main' ]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish role
