@@ -1,0 +1,13 @@
+---
+# see https://github.com/xcpretty/xcode-install#installation
+- name: Download a pre-compiled transitive dependency of xcversion
+  command:
+    cmd: curl -sL -O https://github.com/neonichu/ruby-domain_name/releases/download/v0.5.99999999/domain_name-0.5.99999999.gem
+    creates: ~/domain_name-0.5.99999999.gem
+- name: Install transitive dependency
+  gem:
+    name: domain_name
+    gem_source: domain_name-0.5.99999999.gem
+    state: present
+- name: Install xcversion
+  command: gem install --conservative xcode-install

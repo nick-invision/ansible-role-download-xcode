@@ -1,0 +1,9 @@
+---
+- name: Download Xcode Xips to remote
+  environment:
+    XCODE_INSTALL_USER: "{{ xcode_install_user }}"
+    XCODE_INSTALL_PASSWORD: "{{ xcode_install_pass }}"
+  command:
+    cmd: xcversion install {{ item }} --no-install
+    creates: ~/Xcode_{{ item }}.xip
+  loop: "{{ xcode_versions }}"

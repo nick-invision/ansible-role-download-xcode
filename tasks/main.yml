@@ -1,0 +1,14 @@
+---
+- name: Collect Info
+  include_tasks: collect-info.yml
+
+- name: Install xcversion
+  include_tasks: install-xcversion.yml
+  when: should_install_xcversion
+
+- name: Set Fastlane Cookie
+  include_tasks: set-cookie.yml
+  when: should_copy_local_cookie
+
+- name: Download Xcode Xip(s)
+  include_tasks: download-xc-xips.yml

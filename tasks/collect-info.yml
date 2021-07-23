@@ -1,0 +1,18 @@
+---
+- name: Validate required values
+  include_role:
+    name: nick_invision.required
+  vars:
+    required_vars:
+      - xcode_install_user
+      - xcode_install_pass
+      - xcode_versions
+
+- name: Check for xcversion
+  command: xcversion --version
+  ignore_errors: true
+  register: xcversion_exists
+
+- name: Set facts
+  set_facts:
+    should_install_xcversion: "{{ xcversion_exists.rc > 0 }}"

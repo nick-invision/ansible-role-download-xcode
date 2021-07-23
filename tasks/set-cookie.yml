@@ -1,0 +1,29 @@
+---
+- name: Set Facts
+  set_fact:
+    local_cookie_path: "{{ path.replace(lookup('env', 'HOME'), '~') }}"
+    remote_cookie_dir: "{{ path | dirname }}/"
+  vars:
+    path: "~/.fastlane/spaceship/{{ xcode_install_user }}/cookie"
+
+- name: Check for local cookie
+  stat:
+    path: "{{ local_cookie_path }}"
+  register: local_cookie_stat
+
+- name: Verify local cookie exists
+  assert:
+    that: local_cookie_stat.stat.exists
+    quiet: true
+    fail_msg: "{{ local_cookie_path }} not found locally. See readme for instructions to generate a local cookie"
+
+- name: Verify cookie matches xcode install user
+  assert:
+    that: "{{ local_cookie_path is search(xcode_install_user) }}"
+    quiet: true
+    fail_msg: "Specified xcode_install_user '{{ xcode_install_user}}' not found in cookie path {{ local_cookie_path }}.  The cookie must be generated using the install user."
+
+- name: Copy local cookie to remote
+  copy:
+    src: "{{ local_cookie_path }}"
+    dest: "{{ remote_cookie_dir }}"
